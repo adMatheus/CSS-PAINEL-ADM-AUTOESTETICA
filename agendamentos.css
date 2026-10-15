@@ -1,0 +1,280 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../Imagens/Login\ e\ cadastro..jpeg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+#form-agendamento {
+    width: 90%;
+    max-width: 700px;
+    margin: 120px auto 60px auto; /* Afasta do topo e centraliza */
+    padding: 40px;
+    background-color: rgba(10, 10, 10, 0.85); /* Fundo escuro semi-transparente */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    z-index: 10;
+    position: relative;
+}
+
+/* --- Títulos e Textos do Formulário --- */
+#form-agendamento h2 {
+    font-family: 'Lobster', cursive; /* Usa a mesma fonte do logo */
+    font-size: 48px;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#form-agendamento p {
+    text-align: center;
+    color: #cccccc;
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+/* --- Estilos dos Campos do Formulário --- */
+#form-agendamento form {
+    display: grid;
+    grid-template-columns: 1fr; /* Uma coluna por padrão */
+    gap: 20px; /* Espaço entre os campos */
+}
+
+#form-agendamento label {
+    display: block;
+    margin-bottom: 8px;
+    color: #f0f0f0;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#form-agendamento input[type="text"],
+#form-agendamento input[type="tel"],
+#form-agendamento input[type="email"],
+#form-agendamento input[type="date"],
+#form-agendamento select,
+#form-agendamento textarea {
+    width: 100%;
+    padding: 14px;
+    background-color: #222; /* Fundo escuro para o campo */
+    border: 1px solid #555; /* Borda sutil */
+    border-radius: 5px;
+    color: #ffffff; /* Texto do usuário em branco */
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Remove o estilo padrão do select */
+#form-agendamento select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Seta customizada para o select */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 20px;
+    padding-right: 40px; /* Espaço para a seta */
+}
+
+/* Opções do select */
+#form-agendamento select option {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Placeholder (texto de dica) */
+#form-agendamento ::placeholder {
+    color: #888;
+}
+
+/* Foco (quando o usuário clica no campo) */
+#form-agendamento input:focus,
+#form-agendamento select:focus,
+#form-agendamento textarea:focus {
+    outline: none;
+    border-color: #ffffff; /* Borda branca ao focar */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Para o Date Picker (ícone do calendário) */
+#form-agendamento input[type="date"] {
+   color-scheme: dark; /* Força o ícone do calendário a ser branco */
+}
+
+/* --- Botão de Envio (Estilo do cta-button) --- */
+#form-agendamento button[type="submit"] {
+    /* Copiado do .cta-button do style.css principal */
+    background-color: #ffffff; 
+    color: #000000; 
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border: none; /* Remove borda padrão do botão */
+    cursor: pointer;
+    margin-top: 10px; /* Espaço extra acima do botão */
+    width: 100%; /* Ocupa a largura total */
+}
+
+#form-agendamento button[type="submit"]:hover {
+    background-color: #cccccc;
+    color: #333333;
+}
+
+
+/* --- Mensagens de Status (Sucesso, Erro, Aviso) --- */
+.status-message {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    border: 1px solid transparent;
+    font-size: 15px;
+}
+
+.status-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.status-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+.status-message.warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: #ffeeba;
+}
+
+header.main-header-bar {
+    position: fixed; /* 'absolute' para ficar no topo */
+    top: 0;
+    left: 0;
+    height: 60px;
+    width: 100%;
+    background-color: #000; /* Fundo preto sólido */
+    padding: 15px 40px; /* Espaçamento interno */
+    box-sizing: border-box;
+    z-index: 100; /* Garante que fique acima de todo o conteúdo */
+    border-bottom: 1px solid #333; /* Linha de separação sutil */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Logo na esquerda, Grupo na Direita */
+    align-items: center;
+    width: 100%;
+    max-width: 1300px; /* Limita a largura (opcional) */
+    margin: 0 auto; /* Centraliza o container */
+    padding: 0% 40px;
+}
+
+/* Logo/Título da Esquerda */
+.logo-area {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: bold;
+}
+
+.logo-area a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+}
+.logo-area a:hover {
+    color: #ccc;
+}
+
+
+/* Agrupador da Direita */
+.header-right-group {
+    display: flex;
+    align-items: center;
+    gap: 35px; /* Espaço entre o menu de links e os ícones */
+}
+
+/* Navegação (Links de Texto) */
+.main-navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+}
+
+.main-navigation li {
+    /* Adiciona as barras verticais (separadores) */
+    border-right: 1px solid #555;
+    padding-right: 25px;
+}
+
+/* Remove a barra do último item */
+.main-navigation li:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+
+.main-navigation a {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: normal; /* Como pedimos antes */
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.main-navigation a:hover {
+    color: #ccc;
+}
+
+/* Ícones (Carrinho/Usuário) */
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon-link svg {
+    fill: #fff;
+    width: 24px;
+    height: 24px;
+    transition: fill 0.3s;
+}
+
+.icon-link:hover svg {
+    fill: #ccc;
+}
+
+/* Remove o header antigo (transparente) que usava .top-menu */
+/* Se você ainda tiver o .top-menu, pode apagar essas regras */
+.top-menu {
+    display: none;
+}

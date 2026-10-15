@@ -1,0 +1,151 @@
+/* --- style-login-adm.css --- */
+
+/* 1. Estilo do Body (Fundo e Overlay) - IDÊNTICO AO LOGIN/CADASTRO */
+body.login-adm-page {
+    /* Use a mesma imagem de fundo dos outros logins */
+    background-image: url('../Imagens/Login\ e\ cadastro..jpeg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centraliza verticalmente o formulário */
+    
+    margin: 0;
+    height: 100vh;
+    padding-top: 60px; /* Compensação da navbar */
+    padding-bottom: 35px; /* Compensação do footer */
+    
+    position: relative;
+    overflow: hidden; 
+}
+
+/* Overlay Escuro */
+body.login-adm-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75); /* Um pouco mais escuro para área de ADM */
+    z-index: -1;
+}
+
+/* 2. Contêiner Principal */
+.login-container {
+    width: 100%;
+    max-width: 450px; /* Formulário mais compacto que o cadastro */
+    padding: 0 20px;
+    z-index: 10;
+}
+
+/* 3. A Caixa de Formulário (Branca) */
+.login-box {
+    background-color: #fff; 
+    padding: 30px 40px; 
+    border-radius: 8px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+    color: #333; 
+}
+
+.page-title {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: #000;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.login-description {
+    font-size: 13px;
+    color: #777;
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+}
+
+/* 4. Estilo dos Campos do Formulário (Herança dos estilos anteriores) */
+.form-group {
+    margin-bottom: 20px;
+    position: relative; 
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: #f5f5f5; 
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box; 
+}
+
+/* Show/Hide Senha */
+.password-group .show-hide-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(12px); 
+    font-size: 13px;
+    color: #007bff; 
+    cursor: pointer;
+    user-select: none;
+}
+
+/* 5. Botões de Ação (Voltar / Entrar) */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.form-actions button {
+    flex: 1; 
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.btn-secondary {
+    background-color: #e0e0e0; 
+    color: #555;
+}
+
+.btn-primary {
+    background-color: #000; 
+    color: #fff;
+}
+
+/* 6. Estilo do Footer - IDÊNTICO AO LOGIN/CADASTRO (Ajustado) */
+.cadastro-footer {
+    width: 100%; /* CRÍTICO: Garante que ocupe 100% da largura da tela */
+
+    /* Adicione estas propriedades para garantir que o footer se estique por toda a viewport */
+    left: 0;
+    right: 0;
+    
+    text-align: center;
+    padding: 10px 0;
+    background-color: #1a1a1a; 
+    color: #aaa;
+    font-size: 13px;
+    position: fixed; 
+    bottom: 0;
+    z-index: 50;
+    border-top: 1px solid #333;
+}

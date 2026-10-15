@@ -1,0 +1,567 @@
+/* --- style-painel-adm.css --- */
+
+/* ================================== */
+/* TEMA HÍBRIDO: HEADER E SIDEBAR ESCUROS, CONTEÚDO CLARO */
+/* ================================== */
+body.painel-adm-page {
+    /* Fundo claro sólido */
+    background-color: #f8f9fa;
+    background-image: none; 
+    color: #212529;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden; 
+}
+
+/* Overlay removido, pois o fundo agora é sólido */
+body.painel-adm-page::before {
+    content: none; 
+}
+
+/* --- Header do Painel --- */
+.painel-header {
+    background-color: #000; 
+    color: #fff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
+    position: relative;
+    z-index: 100;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.painel-header:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.painel-header h1 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-excluir {
+    /* ... outras propriedades ... */
+    text-decoration: none !important; /* Deve estar no seu CSS */
+}
+
+.btn-logout {
+    background-color: #555;
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+}
+
+.btn-logout:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+/* --- Layout Principal (Sidebar e Conteúdo) --- */
+.painel-main-layout {
+    display: flex;
+}
+
+/* 1. Sidebar (Navegação) */
+.painel-sidebar {
+    width: 200px;
+    background-color: #1a1a1a; 
+    color: #fff;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); 
+    flex-shrink: 0; 
+    min-height: calc(100vh - 61px); 
+    z-index: 50;
+    transition: width 0.3s ease-in-out;
+}
+
+.painel-sidebar:hover {
+    width: 210px;
+}
+
+.painel-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.painel-sidebar li a {
+    display: block;
+    padding: 12px 20px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out, padding-left 0.3s ease-in-out, transform 0.2s ease;
+}
+
+.painel-sidebar li a:hover {
+    background-color: #555;
+    padding-left: 25px;
+    transform: translateX(5px);
+}
+
+.painel-sidebar li.active {
+    border-left: 4px solid #fff; 
+    background-color: #6c757d; 
+}
+
+/* 2. Área de Conteúdo */
+.painel-content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: #f8f9fa;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Estilos do Dashboard (KPI Cards) --- */
+.kpi-cards {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.kpi-card {
+    /* Fundo cinza claro */
+    background-color: #e9ecef; 
+    border: 1px solid #dee2e6; 
+    border-radius: 8px;
+    padding: 20px;
+    flex-grow: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.kpi-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.kpi-card h3 {
+    margin-top: 0;
+    font-size: 14px;
+    color: #6c757d; 
+    text-transform: uppercase;
+}
+
+.kpi-card .kpi-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #212529; 
+    margin: 5px 0 0 0;
+}
+
+/* --- Tabela de Agendamentos (Tema Claro com Painéis Cinza) --- */
+.agendamentos-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    /* Fundo cinza para a tabela */
+    background-color: #e9ecef; 
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #212529; 
+    overflow: hidden; 
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.agendamentos-table th, .agendamentos-table td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
+    
+    /* REMOÇÃO DAS LINHAS DE GRADE */
+    border-bottom: none; 
+}
+
+.agendamentos-table th {
+    background-color: #ced4da; 
+    color: #212529;
+    font-weight: bold;
+    text-transform: uppercase;
+    
+    /* Adiciona UMA linha apenas abaixo do cabeçalho */
+    border-bottom: 2px solid #dee2e6; 
+}
+
+/* Zebra-striping (listras) para melhor leitura */
+.agendamentos-table tbody tr {
+    transition: background-color 0.3s ease-in-out;
+}
+
+.agendamentos-table tbody tr:nth-of-type(even) {
+    background-color: #dee2e6;
+}
+
+.agendamentos-table tbody tr:hover {
+    background-color: #ced4da;
+}
+
+.agendamentos-table.dashboard-table td:nth-child(6) {
+    font-weight: bold;
+    color: #212529; 
+}
+
+/* Base para todos os botões pequenos */
+.btn-sm {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: none; 
+    transition: transform 0.2s ease, background-color 0.3s; /* Adicionado background-color */
+}
+
+.btn-sm:hover {
+    transform: scale(1.05);
+}
+
+/* ======================================= */
+/* ESTILOS DOS BOTÕES DE AÇÃO (Detalhes/Remover) */
+/* ======================================= */
+.btn-action {
+    background-color: #6c757d; 
+    color: #212529;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+    text-decoration: none; 
+}
+
+.btn-action:hover {
+    background-color: #5a6268;
+    transform: scale(1.05);
+    text-decoration: none; 
+}
+
+/* Botão Detalhes (Azul Sólido) */
+.btn-action.btn-details {
+    background-color: #007bff;
+    color: #fff;
+}
+.btn-action.btn-details:hover {
+    background-color: #0056b3;
+}
+
+/* 1. CORREÇÃO SOLICITADA: Botão EXCLUIR (Clientes) */
+/* Se estiver usando a classe .btn-delete, aplique este estilo */
+.btn-sm.btn-delete {
+    background-color: #adb5bd; /* Cinza Neutro solicitado */
+    color: #212529;
+    text-decoration: none; /* Garante que não é um link sublinhado */
+}
+.btn-sm.btn-delete:hover {
+    background-color: #9ea7b0;
+}
+
+/* 2. CORREÇÃO SOLICITADA: Botão REMOVER (Serviços) */
+/* Este é o estilo para a classe .btn-remove (ou similar que estava azul) */
+.btn-action.btn-remove {
+    background-color: #343a40; /* Preto Sólido solicitado */
+    color: #f8f9fa; /* Texto branco para contraste */
+}
+.btn-action.btn-remove:hover {
+    background-color: #212529;
+}
+
+
+/* --- Estilos para a Barra de Filtros (Todos/Hoje/etc.) --- */
+.filter-bar {
+    display: flex; 
+    gap: 10px; 
+    align-items: center;
+    margin-bottom: 25px; 
+}
+
+.btn-filter {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+    background-color: #343a40; 
+    color: #f8f9fa; 
+    text-decoration: none;
+}
+
+.btn-filter.btn-active,
+.btn-filter:hover {
+    background-color: #007bff; 
+    color: white;
+    transform: scale(1.05);
+}
+
+.btn-filter.btn-secondary {
+    margin-left: auto; 
+    background-color: #28a745; 
+    color: white;
+    padding: 10px 20px; 
+}
+
+.btn-filter.btn-secondary:hover {
+    background-color: #218838;
+}
+
+/* 3. CORREÇÃO SOLICITADA: Botões "Salvar Agendamento" e "Cancelar" (Novo Agendamento) */
+/* Estilos Padrões para botões grandes (form-actions-footer) */
+.form-actions-footer button {
+    padding: 10px 20px; /* Reduzido de um possível 12px 24px */
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.15s, box-shadow 0.3s, background-color 0.3s;
+}
+
+/* Estilo para o botão CANCELAR (Secundário) */
+.form-actions-footer .btn-secondary {
+    background-color: #6c757d; 
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Efeito de Hover/Animação para o CANCELAR */
+.form-actions-footer .btn-secondary:hover {
+    background-color: #5a6268;
+    box-shadow: 0 0 10px rgba(108, 117, 125, 0.8); /* Shadow Glow */
+}
+
+/* Estilo para o botão SALVAR (Primário) */
+.form-actions-footer .btn-primary {
+    background-color: #007bff; /* Azul padrão */
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.4); /* Shadow mais visível */
+}
+
+/* Efeito de Hover/Animação para o SALVAR */
+.form-actions-footer .btn-primary:hover {
+    background-color: #0056b3;
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.8); /* Shadow Glow */
+}
+
+/* Efeito de Clique (Push Down) para ambos os botões */
+.form-actions-footer button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+/* --- Estilo para Grupo de Botões de Status --- */
+.status-button-group {
+    display: flex;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+    width: 100%;
+    max-width: 240px; 
+}
+
+.btn-status {
+    flex: 1; 
+    padding: 6px 4px; 
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    background-color: #e9ecef; 
+    color: #495057;
+    text-decoration: none; 
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+}
+
+.btn-status:hover {
+    transform: scale(1.05);
+}
+
+.btn-status:not(:last-child) {
+    border-right: 1px solid #dee2e6;
+}
+
+/* ================================== */
+/* CORES DOS BOTÕES DE STATUS   */
+/* ================================== */
+
+/* "Pendente" (Não Concluído) - Vermelho Sólido */
+.btn-status-nao-concluido.active,
+.btn-status-nao-concluido:hover {
+    background-color: #dc3545; 
+    color: #fff;
+}
+
+/* "Em Andamento" - Cinza Sólido */
+.btn-status-em-andamento.active,
+.btn-status-em-andamento:hover {
+    background-color: #6c757d; 
+    color: #fff; 
+}
+
+/* "Concluído" - Verde Sólido */
+.btn-status-concluido.active,
+.btn-status-concluido:hover {
+    background-color: #28a745; 
+    color: #fff;
+}
+
+/* Novo estilo para o botão "Ver Agenda Completa" */
+.btn-view-agenda {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: grey;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px; /* Forma de pílula */
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease, box-shadow 0.3s ease-in-out;
+}
+
+.btn-view-agenda:hover {
+    background-color: black;
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ced4da; /* Borda cinza clara */
+    border-radius: 4px;
+    background-color: #fff; /* Fundo branco */
+    color: #495057;
+    font-size: 16px;
+    box-sizing: border-box;
+    /* Transição para animação */
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* 1. Animação de Foco/Hover (Caixas de Opção e Texto) */
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #6c757d; /* Borda cinza mais escura no foco */
+    box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.25); /* Sombra suave no foco (Cinza) */
+    outline: none; /* Remove o outline padrão do navegador */
+}
+
+/* 2. Estilização Específica para Select (Melhorando a aparência em alguns navegadores) */
+.form-group select {
+    /* Remove a aparência nativa em navegadores que suportam */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236c757d%22%20d%3D%22M287%20177.3l-133%20133c-5%205-13%205-18%200l-133-133c-5-5-5-13%200-18l18-18c5-5%2013-5%2018%200l105%20105%20105-105c5-5%2013-5%2018%200l18%2018c5%205%205%2013%200%2018z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 12px auto;
+    padding-right: 30px; /* Espaço para o ícone customizado */
+}
+
+
+/* 3. Campo Observações (Textarea) - Tamanho Fixo */
+.form-group textarea {
+    /* Define o tamanho fixo (linhas) */
+    min-height: 100px;
+    max-height: 100px;
+    /* Remove a alça de redimensionamento */
+    resize: none; 
+}
+
+/* ================================== */
+/* ESTILOS DE DETALHES DO AGENDAMENTO (DETALHES-OS) */
+/* ================================== */
+
+/* Estilo para a grade de duas colunas (definida em detalhes_agendamento.php) */
+.detalhes-grid {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px; /* Aumenta o espaço entre as colunas */
+    margin-bottom: 30px;
+}
+
+/* Estilo base para cada bloco de informação (Cliente e Serviço) */
+.detalhes-grid > div {
+    padding: 20px;
+    border: 1px solid #e9ecef; /* Borda cinza bem clara */
+    border-radius: 8px;
+    background-color: #f8f9fa; /* Fundo levemente cinza/branco */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+    transition: all 0.4s ease-in-out; /* Transição suave para a animação */
+}
+
+.detalhes-grid h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #343a40; /* Preto mais suave */
+    border-bottom: 2px solid #adb5bd; /* Linha de separação cinza */
+    padding-bottom: 5px;
+}
+
+/* Estilo para os parágrafos de informação */
+.detalhes-grid p {
+    margin: 8px 0;
+    font-size: 15px;
+}
+
+/* Status Badge - Melhorando a visualização do status */
+.status-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 5px;
+}
+
+/* Cores do Status (Baseado nas cores que você já utiliza) */
+.status-solicitado, .status-nao_concluido {
+    background-color: #dc3545; /* Vermelho */
+    color: #fff;
+}
+.status-em_andamento {
+    background-color: #6c757d; /* Cinza */
+    color: #fff;
+}
+.status-concluido {
+    background-color: #28a745; /* Verde */
+    color: #fff;
+}
+
+.detalhes-grid > div:first-child:hover {
+    /* Efeito de 'levantar' */
+    transform: translateY(-5px); 
+    /* Efeito de 'brilho' sutil */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); 
+    /* Fundo levemente mais escuro */
+    background-color: #e9ecef; 
+}
+
+/* Opcional: Manter o bloco de serviço estático */
+.detalhes-grid > div:nth-child(2) {
+    /* Mantém o bloco de serviço estático, sem animação, para focar no cliente */
+    transition: none; 
+}

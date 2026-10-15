@@ -1,0 +1,559 @@
+/* Importação das fontes Lobster e Playfair Display do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap');
+
+/* --- Estilos Gerais (Reset e Background) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../Imagens/Login\ e\ cadastro..jpeg'); /* **SUBSTITUA** */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+/* --- Menu Superior (Header) --- */
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.top-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 14px; 
+    font-weight: normal;
+    text-decoration: none;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.top-link {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+    /* A fonte e o tamanho serão herdados do .top-menu */
+}
+
+.top-link:hover {
+    color: #cccccc;
+}
+
+.user-icon {
+    width: 24px;
+    height: 24px;
+    fill: #ffffff;
+    vertical-align: middle;
+}
+
+
+/* --- Área de Conteúdo Central (Main) --- */
+.content-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transform: translateY(-5%);
+    z-index: 10;
+}
+
+/* --- Logo/Título Principal --- */
+.logo-title {
+    font-family: 'Lobster', cursive;
+    font-size: 60px;
+    color: #ffffff;
+    padding: 10px 30px;
+    margin-bottom: 50px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* --- Menu Principal de Navegação --- */
+.main-nav {
+    width: 250px; 
+    max-height: 130px; 
+    overflow: hidden; 
+    margin-bottom: 50px;
+    
+}
+
+
+/* // NOVO: Aplicamos a animação na lista 'ul' */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    animation: scroll-vertical 10s linear infinite;
+    animation-play-state: running; 
+    
+}
+
+/* // NOVO: Pausa a animação quando o mouse está sobre a lista */
+.main-nav:hover ul {
+    animation-play-state: paused;
+}
+
+
+.main-nav li {
+    padding-bottom: 5px;
+    border-bottom: 1px solid transparent;
+    white-space: nowrap;
+}
+
+.main-nav li:hover {
+    border-bottom: 1px solid #ffffff;
+}
+
+/* --- O Keyframe Corrigido --- */
+/* 'scroll-vertical' para clareza */
+
+@keyframes scroll-vertical {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+.main-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: #cccccc;
+}
+
+
+/* --- Botão Principal (CTA) --- */
+.cta-button {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button:hover {
+    background-color: #cccccc;
+    color: #333333;
+}
+
+/* --- Contêiner Principal do Formulário --- */
+#form-agendamento {
+    width: 90%;
+    max-width: 700px;
+    margin: 120px auto 60px auto; 
+    padding: 40px;
+    background-color: rgba(10, 10, 10, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    z-index: 10;
+    position: relative;
+}
+
+/* --- Títulos e Textos do Formulário --- */
+#form-agendamento h2 {
+    font-family: 'Lobster', cursive; 
+    font-size: 48px;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#form-agendamento p {
+    text-align: center;
+    color: #cccccc;
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+/* --- Estilos dos Campos do Formulário --- */
+#form-agendamento form {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 20px; 
+}
+
+#form-agendamento label {
+    display: block;
+    margin-bottom: 8px;
+    color: #f0f0f0;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#form-agendamento input[type="text"],
+#form-agendamento input[type="tel"],
+#form-agendamento input[type="email"],
+#form-agendamento input[type="date"],
+#form-agendamento select,
+#form-agendamento textarea {
+    width: 100%;
+    padding: 14px;
+    background-color: #222; 
+    border: 1px solid #555; 
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Remove o estilo padrão do select */
+#form-agendamento select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Seta customizada para o select */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 20px;
+    padding-right: 40px; 
+}
+
+/* Opções do select */
+#form-agendamento select option {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Placeholder (texto de dica) */
+#form-agendamento ::placeholder {
+    color: #888;
+}
+
+/* Foco (quando o usuário clica no campo) */
+#form-agendamento input:focus,
+#form-agendamento select:focus,
+#form-agendamento textarea:focus {
+    outline: none;
+    border-color: #ffffff; 
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Para o Date Picker (ícone do calendário) */
+#form-agendamento input[type="date"] {
+   color-scheme: dark; 
+}
+
+/* --- Botão de Envio (Estilo do cta-button) --- */
+#form-agendamento button[type="submit"] {
+    /* Copiado do .cta-button do style.css principal */
+    background-color: #ffffff; 
+    color: #000000; 
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border: none; 
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%; 
+}
+
+#form-agendamento button[type="submit"]:hover {
+    background-color: #cccccc;
+    color: #333333;
+}
+
+
+/* --- Mensagens de Status (Sucesso, Erro, Aviso) --- */
+.status-message {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    border: 1px solid transparent;
+    font-size: 15px;
+}
+
+.status-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.status-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+.status-message.warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: #ffeeba;
+}
+
+/* --- Estilos para a Página de Cadastro de Cliente --- */
+
+.registration-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    padding: 80px 20px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 5; 
+}
+
+.form-wrapper {
+    background-color: #fff; 
+    padding: 30px 40px; 
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 450px; 
+    color: #333; 
+}
+
+/* Títulos de seção (DADOS PESSOAIS, INFORMAÇÕES DE ENDEREÇO) */
+.section-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Espaçamento entre grupos de formulário */
+.form-group {
+    margin-bottom: 20px;
+    position: relative; 
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 6px;
+    font-weight: normal; 
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="tel"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    background-color: #f9f9f9; 
+}
+
+/* Foco nos inputs */
+.form-group input:focus {
+    border-color: #777;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para o placeholder */
+.form-group ::placeholder {
+    color: #aaa;
+}
+
+/* Botão Show/Hide da senha */
+.password-group {
+    position: relative;
+}
+
+.show-hide-password {
+    position: absolute;
+    right: 12px;
+    bottom: 10px; 
+    font-size: 12px;
+    color: #082a50; 
+    cursor: pointer;
+    user-select: none; 
+}
+
+.show-hide-password:hover {
+    text-decoration: underline;
+}
+
+/* Botões de Ação (Voltar, Confirmar) */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    gap: 15px; 
+}
+
+.form-actions button {
+    flex: 1; /* Faz os botões ocuparem espaço igual */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-secondary {
+    background-color: #e0e0e0; /* Cinza claro para Voltar */
+    color: #555;
+}
+
+.btn-secondary:hover {
+    background-color: #d0d0d0;
+    color: #333;
+}
+
+.btn-primary {
+    background-color: #000; /* Preto para Confirmar */
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #333;
+}
+
+/* Estilização para o novo link ADMINISTADOR */
+.admin-link {
+    /* Herda o estilo dos seus links de navegação normais */
+    color: #ffffff; 
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0 15px; 
+    text-transform: uppercase;
+    border-right: 1px solid #ffffff; 
+    margin-right: 15px; 
+}
+
+* Certifique-se de que o contêiner dos ícones usa Flexbox ou um layout que permita o posicionamento ao lado */
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- Estilo do Dropdown do Perfil --- */
+
+/* 1. Área de Hover */
+.perfil-hover-area {
+    position: relative; 
+    display: inline-block;
+    margin-left: 15px; 
+}
+
+/* 2. O Dropdown (Janela Temporária) */
+.perfil-dropdown {
+    position: absolute; 
+    top: 100%; 
+    right: 0; 
+    
+    width: 150px; 
+    background-color: #fff; 
+    border: 1px solid #333;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 1000; 
+    padding: 5px 0;
+    
+    /* Inicio OCULTO */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+/* 3. A MÁGICA DO HOVER */
+.perfil-hover-area:hover .perfil-dropdown {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* 4. Estilo dos Links */
+.perfil-dropdown .dropdown-link {
+    display: block;
+    padding: 8px 12px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap; 
+}
+
+.perfil-dropdown .dropdown-link:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.perfil-dropdown .logout-link {
+    border-top: 1px solid #eee;
+    margin-top: 5px;
+    padding-top: 8px;
+    color: #cc0000; 
+}
+
+.perfil-link {
+    text-decoration: none !important; 
+    color: white !important; 
+}
+
+.perfil-link:hover {
+    color: white !important;
+    text-decoration: none !important;
+}
+
